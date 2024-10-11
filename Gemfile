@@ -49,28 +49,6 @@ gem 'vcr'
 gem 'webmock'
 gem 'redis'
 
-group :development, :test do
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
-  gem 'rspec-rails'
-  gem 'factory_bot_rails'
-  gem 'rswag-specs'
-
-  gem "awesome_print"
-  gem 'meta_request'
-  gem 'bullet'
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'hirb'
-  gem 'hirb-unicode'
-  gem 'pry-byebug'
-  gem 'pry-stack_explorer'
-  gem "awesome_print"
-  gem 'meta_request'
-  gem 'bullet'
-  gem 'better_errors'
-  gem 'binding_of_caller'
-end
-
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
@@ -80,4 +58,12 @@ group :development do
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
 end
 
+group :development, :test do
+ gem "debug", platforms: %i[ mri mingw x64_mingw ]
+ gem 'rspec-rails'
+ gem 'factory_bot_rails'
+ gem 'rswag-specs'
 
+ gem 'pry-byebug'
+ gem 'pry-stack_explorer'
+end
