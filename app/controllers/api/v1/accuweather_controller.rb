@@ -7,10 +7,8 @@ module Api
       end
 
       def historical
-        temperatures = Rails.cache.fetch('historical_temperatures', expires_in: 30.minutes) do
-          Forecast.historical.pluck(:temperature)
-        end
-        render json: { temperatures: temperatures }
+        res = Forecasts::Historical.new.call
+        render json: { temperatures: res }
       end
 
       def historical_max

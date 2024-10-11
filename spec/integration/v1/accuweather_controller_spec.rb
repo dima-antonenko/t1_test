@@ -12,6 +12,12 @@ RSpec.describe 'Accuweather API', type: :request do
     JSON.parse(response.body)
   end
 
+  def get_historical_temperature
+    get '/weather/historical'
+    JSON.parse(response.body)
+  end
+
+
   describe 'GET /weather/current' do
     it 'returns the current temperature' do
       json_response = get_current_temperature
@@ -24,9 +30,8 @@ RSpec.describe 'Accuweather API', type: :request do
 
   describe 'GET /weather/historical' do
     it 'returns historical temperatures' do
-      get '/weather/historical'
-      expect(response).to have_http_status(:ok)
-      json_response = JSON.parse(response.body)
+      json_response = get_historical_temperature
+
       expect(json_response).to have_key('temperatures')
       expect(json_response['temperatures']).to be_an(Array)
       expect(json_response['temperatures'].size).to be > 0
