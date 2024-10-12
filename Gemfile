@@ -67,3 +67,7 @@ group :development, :test do
  gem 'pry-byebug'
  gem 'pry-stack_explorer'
 end
+
+# добавление "что можно улучшить"
+# Индексы на базу данных(brin)
+# Процент тестового покрытия и active record doctor

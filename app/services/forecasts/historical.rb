@@ -1,4 +1,5 @@
 module Forecasts
+  # Получение температуры за сутки
   class Historical < BaseService
     include ForecastsValidation
 

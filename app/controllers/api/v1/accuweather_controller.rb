@@ -3,7 +3,7 @@ module Api
     class AccuweatherController < ApplicationController
       def current
         res = Forecasts::CurrentTemperature.new.call
-        render json: { temperature: res }
+        render_json_item(:temperature, res)
       end
 
       def historical
@@ -12,24 +12,18 @@ module Api
       end
 
       def historical_max
-        temperature = Rails.cache.fetch('historical_max_temperature', expires_in: 30.minutes) do
-          Forecast.historical_max
-        end
-        render json: { temperature: temperature }
+        res = Forecasts::HistoricalMax.new.call
+        render_json_item(:temperature, res)
       end
 
       def historical_min
-        temperature = Rails.cache.fetch('historical_min_temperature', expires_in: 30.minutes) do
-          Forecast.historical_min
-        end
-        render json: { temperature: temperature }
+        res = Forecasts::HistoricalMin.new.call
+        render_json_item(:temperature, res)
       end
 
       def historical_avg
-        temperature = Rails.cache.fetch('historical_avg_temperature', expires_in: 30.minutes) do
-          Forecast.historical_avg
-        end
-        render json: { temperature: temperature }
+        res = Forecasts::HistoricalAvg.new.call
+        render_json_item(:temperature, res)
       end
 
       def health
@@ -37,13 +31,10 @@ module Api
       end
 
       def by_time
-        timestamp = params[:timestamp].to_i
-        forecast = Rails.cache.fetch("forecast_#{timestamp}", expires_in: 30.minutes) do
-          Forecast.find_by_closest_time(timestamp)
-        end
+        res = Forecasts::ByTime.new(params[:timestamp]).call
 
-        if forecast.present?
-          render json: { temperature: forecast.temperature }
+        if res.present?
+          render_json_item(:temperature, res.temperature)
         else
           render json: { error: 'No forecast found within one hour of the given timestamp' }, status: :not_found
         end

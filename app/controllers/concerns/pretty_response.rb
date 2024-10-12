@@ -46,6 +46,10 @@ module PrettyResponse
     render(json: json, status: code)
   end
 
+  def render_json_item(key, value)
+    render json: { key => value }
+  end
+
   private
 
   def get_serializer(item, serializer)

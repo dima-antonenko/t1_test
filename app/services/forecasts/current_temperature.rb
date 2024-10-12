@@ -1,4 +1,5 @@
 module Forecasts
+  # Получение текущей температуры
   class CurrentTemperature < BaseService
     include ForecastsValidation
 
