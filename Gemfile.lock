@@ -84,6 +84,8 @@ GEM
     blueprinter (1.1.2)
     bootsnap (1.18.4)
       msgpack (~> 1.2)
+    brakeman (6.2.1)
+      racc
     builder (3.3.0)
     byebug (11.1.3)
     coderay (1.1.3)
@@ -321,6 +323,7 @@ DEPENDENCIES
   annotate
   blueprinter
   bootsnap
+  brakeman
   debug
   dotenv-rails
   error_highlight (>= 0.4.0)
