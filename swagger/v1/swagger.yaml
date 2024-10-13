@@ -1,0 +1,61 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/weather/historical/min":
+    get:
+      summary: historical_min accuweather
+      responses:
+        '200':
+          description: successful
+  "/weather/historical/max":
+    get:
+      summary: historical_max accuweather
+      responses:
+        '200':
+          description: successful
+  "/weather/historical/avg":
+    get:
+      summary: historical_avg accuweather
+      responses:
+        '200':
+          description: successful
+  "/weather/current":
+    get:
+      summary: current accuweather
+      responses:
+        '200':
+          description: successful
+  "/weather/historical":
+    get:
+      summary: historical accuweather
+      responses:
+        '200':
+          description: successful
+  "/weather/by_time":
+    get:
+      summary: by_time accuweather
+      parameters:
+      - name: timestamp
+        in: query
+        description: Timestamp for the forecast
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: successful
+        '404':
+          description: not found
+  "/health":
+    get:
+      summary: health accuweather
+      responses:
+        '200':
+          description: successful
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
