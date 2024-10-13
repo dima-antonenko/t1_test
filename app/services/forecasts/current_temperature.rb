@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 module Forecasts
   # Получение текущей температуры
   class CurrentTemperature < BaseService
     include ForecastsValidation
 
-    LIMIT = 1.freeze
-    CACHE_EXPIRES_MINUTES = 30.freeze
+    LIMIT = 1
+    CACHE_EXPIRES_MINUTES = 30
     def call
       validate!
-      get_res('current_temp', run_query, CACHE_EXPIRES_MINUTES)
+      get_res("current_temp", run_query, CACHE_EXPIRES_MINUTES)
     end
 
     private

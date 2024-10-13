@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 module Forecasts
   # Получение температуры за сутки
   class Historical < BaseService
     include ForecastsValidation
 
-    LIMIT = 24.freeze
+    LIMIT = 24
 
     def call
       validate!
-      get_res('historical_temperatures', run_query, CACHE_EXPIRES_MINUTES)
+      get_res("historical_temperatures", run_query, CACHE_EXPIRES_MINUTES)
     end
 
     private

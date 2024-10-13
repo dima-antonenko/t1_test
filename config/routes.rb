@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -12,8 +14,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  mount Rswag::Ui::Engine => '/api-docs'
-  mount Rswag::Api::Engine => '/api-docs'
+  mount Rswag::Ui::Engine => "/api-docs"
+  mount Rswag::Api::Engine => "/api-docs"
 
   get "/weather/historical/min", to: "api/v1/accuweather#historical_min"
   get "/weather/historical/max", to: "api/v1/accuweather#historical_max"
@@ -23,5 +25,5 @@ Rails.application.routes.draw do
   get "/weather/historical", to: "api/v1/accuweather#historical"
   get "/weather/by_time", to: "api/v1/accuweather#by_time"
 
-  mount HealthBit.rack => '/health'
+  mount HealthBit.rack => "/health"
 end

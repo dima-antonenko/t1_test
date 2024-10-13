@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Forecasts
   # Получение температуры по времени
   class ByTime < BaseService
@@ -22,7 +24,7 @@ module Forecasts
     def run_query
       time = Time.at(timestamp.to_i)
 
-      Forecast.where('epoch_time BETWEEN ? AND ?', time - 1.hour, time + 1.hour)
+      Forecast.where("epoch_time BETWEEN ? AND ?", time - 1.hour, time + 1.hour)
               .order(Arel.sql("ABS(extract(epoch from epoch_time) - #{timestamp})"))
               .first
     end
