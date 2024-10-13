@@ -23,5 +23,5 @@ Rails.application.routes.draw do
   get "/weather/historical", to: "api/v1/accuweather#historical"
   get "/weather/by_time", to: "api/v1/accuweather#by_time"
 
-  get "/health", to: "api/v1/accuweather#health"
+  mount HealthBit.rack => '/health'
 end
