@@ -15,9 +15,11 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_11_091421) do
   enable_extension "plpgsql"
 
   create_table "forecasts", force: :cascade do |t|
-    t.decimal "temperature"
-    t.datetime "epoch_time", precision: nil
+    t.decimal "temperature", null: false
+    t.datetime "epoch_time", precision: nil, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["epoch_time"], name: "index_forecasts_on_epoch_time"
+    t.index ["temperature"], name: "index_forecasts_on_temperature"
   end
 end

@@ -50,7 +50,7 @@ gem 'webmock'
 gem 'redis'
 
 gem 'health_bit'
-
+gem "annotate"
 
 gem 'blueprinter'
 group :development do
