@@ -54,7 +54,7 @@ gem "health_bit"
 gem "annotate"
 gem "lograge"
 
-gem "rubocop", "~> 1.36", require: false
+gem "rubocop", "~> 1.68", require: false
 gem "rubocop-rails", require: false
 gem "rubocop-performance", require: false
 gem "rubocop-rspec", require: false
